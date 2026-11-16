@@ -1,0 +1,48 @@
+# Build output
+**/bin/
+**/obj/
+**/out/
+**/publish/
+
+# IDE
+**/.vs/
+**/.vscode/
+**/.idea/
+**/*.user
+**/*.suo
+**/*.userosscache
+**/*.sln.docstates
+
+# Logs
+**/logs/
+**/*.log
+
+# Git
+.git/
+.gitignore
+.gitattributes
+
+# Docker
+**/Dockerfile*
+**/docker-compose*
+**/.dockerignore
+
+# Secrets / env
+**/.env
+**/.env.*
+**/secrets.json
+**/appsettings.*.Local.json
+
+# OS
+.DS_Store
+Thumbs.db
+
+# NuGet
+**/*.nupkg
+**/packages/
+
+# Tests coverage
+**/TestResults/
+**/coverage/
+**/*.coverage
+**/*.trx

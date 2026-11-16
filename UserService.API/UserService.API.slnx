@@ -1,0 +1,9 @@
+<Solution>
+  <Folder Name="/Tests/">
+    <Project Path="../UserService.IntegrationTests/UserService.IntegrationTests.csproj" Id="5ff8b664-5de5-4e00-b542-0c787622797f" />
+    <Project Path="../UserService.UnitTests/UserService.UnitTests.csproj" Id="f10be245-730b-415c-9c87-b112fe552a11" />
+  </Folder>
+  <Project Path="../UsersService.Application/UsersService.Application.csproj" Id="a790bebe-cbb5-4215-813f-a53059872019" />
+  <Project Path="../UsersService.Domain/UsersService.Domain.csproj" Id="737d7b57-c99c-423c-bc51-0139731a2e63" />
+  <Project Path="UserService.API.csproj" />
+</Solution>

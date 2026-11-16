@@ -1,0 +1,11 @@
+{
+  "profiles": {
+    "UsersService.Application": {
+      "commandName": "Project"
+    },
+    "Профиль 1": {
+      "commandName": "Executable",
+      "executablePath": "C:\\Users\\serjb\\source\\repos\\SEBO\\SWork\\Services\\UsersService\\UserService.API\\bin\\Debug\\net8.0\\UserService.API.dll"
+    }
+  }
+}
