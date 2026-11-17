@@ -1,5 +1,4 @@
 ﻿using FluentAssertions;
-using MassTransit.Internals.ImTools;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using NSubstitute;
