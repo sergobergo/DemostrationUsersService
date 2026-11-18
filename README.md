@@ -85,62 +85,14 @@ UsersService/
 
 ## Getting Started
 
+### Configuration
+
+Все необходимые файлы конфигурации уже хранятся в репозитории.
+
 ### Prerequisites
 
 - .NET SDK 8.0
 - Docker Desktop (для запуска через Compose и Testcontainers)
-
-### Configuration
-
-Локально конфигурация в `appsettings.json` / `appsettings.Development.json`:
-
-```json
-{
-  "JwtSettings": {
-    "Key": "your-secret-key-at-least-32-chars",
-    "Issuer": "MyFavouriteApp",
-    "Audience": "MyFavouriteAudience"
-  },
-  "ConnectionStrings": {
-    "UserServiceDbContext": "Host=localhost;Port=5431;Database=UserDb;Username=UserService;Password=UserService",
-    "Redis": "localhost:6379"
-  },
-  "RabbitMq": {
-    "Host": "localhost",
-    "Port": "5672",
-    "VirtualHost": "/",
-    "Username": "guest",
-    "Password": "guest"
-  },
-  "NotificationSettings": {
-    "Name": "UserService",
-    "EmailAddress": "UserService@gmail.com",
-    "EmailPassword": "UserServicePassword",
-    "Host": "localhost",
-    "Port": 1025
-  }
-}
-```
-
-В Docker все значения переопределяются через environment variables (`__` = вложенность в JSON), хосты заменяются на имена сервисов: `pg-db`, `redis`, `rabbitmq`, `mailpit`.
-
-Создай `.env` в корне по образцу `.env.example`:
-
-```env
-POSTGRES_USER=UserService
-POSTGRES_PASSWORD=UserService
-POSTGRES_DB=UserDb
-PGADMIN_DEFAULT_EMAIL=admin@localhost.com
-PGADMIN_DEFAULT_PASSWORD=SuperSecret123
-RABBITMQ_USER=guest
-RABBITMQ_PASS=guest
-RABBITMQ_VHOST=/
-JWT_KEY=your-secret-key
-JWT_ISSUER=MyFavouriteApp
-JWT_AUDIENCE=MyFavouriteAudience
-BUILD_TARGET=development
-ASPNETCORE_ENVIRONMENT=Development
-```
 
 ### Run with Docker Compose (recommended)
 
@@ -158,12 +110,6 @@ docker compose up --build
 | **Redis** | localhost:6379 |
 | **RabbitMQ** | localhost:5672 |
 | **MailPit SMTP** | localhost:1025 |
-
-### Run Locally (without Docker)
-
-```bash
-dotnet run --project UserService.API/UserService.API.csproj
-```
 
 ## API Endpoints
 
@@ -221,8 +167,8 @@ dotnet test UserService.IntegrationTests/UserService.IntegrationTests.csproj
 
 GitHub Actions (`.github/workflows/`):
 
-- **CI (`ci.yml`)** — на каждый push/PR: restore, build, unit-тесты, integration-тесты, проверка сборки Dockerfile
-- **CD (`cd.yml`)** — на push в `main` / tag `v*`: сборка `production`-образа и публикация в `ghcr.io/<owner>/userservice`
+- **CI** — на каждый push/PR: restore, build, unit-тесты, integration-тесты, проверка сборки Dockerfile
+- **CD** — на push в `main` / tag `v*`: сборка `production`-образа и публикация в `ghcr.io/sergobergo/userservice`
 
 ## Exception Mapping
 

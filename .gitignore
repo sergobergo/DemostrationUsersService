@@ -366,5 +366,4 @@ FodyWeavers.xsd
 **/obj/
 **/logs/
 .env
-.env.*
 *.user

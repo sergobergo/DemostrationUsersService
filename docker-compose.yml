@@ -81,31 +81,26 @@ services:
     environment:
       ASPNETCORE_ENVIRONMENT: ${ASPNETCORE_ENVIRONMENT:-Development}
 
-      # ── PostgreSQL ──
       ConnectionStrings__UserServiceDbContext: >-
         Host=pg-db;Port=5432;
         Database=${POSTGRES_DB};
         Username=${POSTGRES_USER};
         Password=${POSTGRES_PASSWORD}
 
-      # ── Redis ──
       ConnectionStrings__Redis: redis:6379
 
-      # ── RabbitMQ ──
       RabbitMq__Host: rabbitmq
       RabbitMq__Port: "5672"
       RabbitMq__VirtualHost: ${RABBITMQ_VHOST}
       RabbitMq__Username: ${RABBITMQ_USER}
       RabbitMq__Password: ${RABBITMQ_PASS}
 
-      # ── MailPit ──
       NotificationSettings__Host: mailpit
       NotificationSettings__Port: "1025"
       NotificationSettings__Name: ${NOTIFICATION_NAME}
       NotificationSettings__EmailAddress: ${NOTIFICATION_EMAIL}
       NotificationSettings__EmailPassword: ${NOTIFICATION_PASSWORD}
 
-      # ── JWT ──
       JwtSettings__Key: ${JWT_KEY}
       JwtSettings__Issuer: ${JWT_ISSUER}
       JwtSettings__Audience: ${JWT_AUDIENCE}
