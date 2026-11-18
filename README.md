@@ -1,6 +1,3 @@
-Вот готовый `README.md` под твой проект. Копируй в корень solution и вставляй как есть — он заточен под GitHub и под HR, которые смотрят портфолио.
-
-```markdown
 # UserService
 
 ![.NET](https://img.shields.io/badge/.NET-8.0-512BD4?style=flat-square)
@@ -49,7 +46,6 @@
 
 ## Architecture
 
-```mermaid
 flowchart LR
     Client[Client] --> API[UserService.API]
     API --> App[UsersService.Application]
@@ -59,7 +55,6 @@ flowchart LR
     MQ --> Consumer[EmailConsumer]
     Consumer --> SMTP[SmtpConnectionService]
     SMTP --> MailPit[MailPit SMTP]
-```
 
 **Clean Architecture:**
 
@@ -85,7 +80,7 @@ UsersService/
 ├── Dockerfile
 ├── docker-compose.yaml
 ├── .env.example
-└── .github/workflows/                # ci.yml, cd.yml
+└── .github/workflows/                # ci.yml
 ```
 
 ## Getting Started
@@ -164,12 +159,6 @@ docker compose up --build
 | **RabbitMQ** | localhost:5672 |
 | **MailPit SMTP** | localhost:1025 |
 
-Для production-образа:
-
-```bash
-BUILD_TARGET=production docker compose up --build -d
-```
-
 ### Run Locally (without Docker)
 
 ```bash
@@ -247,9 +236,3 @@ GitHub Actions (`.github/workflows/`):
 | `ServiceUnavailableException` | 503 Service Unavailable |
 | `DbSaveChangesException` / `DbAccessDeniedException` | 500 Internal Server Error |
 
-## License
-
-MIT
-```
-
-Если хочешь, могу сделать вторую версию README на английском — для GitHub-портфолио это часто лучше смотрится.
