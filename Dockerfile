@@ -31,8 +31,7 @@ COPY ["UserService.UnitTests/UserService.UnitTests.csproj",     "UserService.Uni
 COPY ["UserService.IntegrationTests/UserService.IntegrationTests.csproj", "UserService.IntegrationTests/"]
 
 # Restore только API (тянет Application + Domain транзитивно)
-RUN --mount=type=cache,id=nuget,target=/root/.nuget/packages \
-    dotnet restore "UserService.API/UserService.API.csproj"
+RUN dotnet restore "UserService.API/UserService.API.csproj"
 
 # ============================================================
 # BUILD: компиляция
@@ -46,8 +45,7 @@ COPY ["UserService.API/",                 "UserService.API/"]
 COPY ["UsersService.Application/",        "UsersService.Application/"]
 COPY ["UsersService.Domain/",             "UsersService.Domain/"]
 
-RUN --mount=type=cache,id=nuget,target=/root/.nuget/packages \
-    dotnet build "UserService.API/UserService.API.csproj" \
+RUN dotnet build "UserService.API/UserService.API.csproj" \
         -c $BUILD_CONFIGURATION \
         -o /app/build \
         --no-restore
@@ -57,8 +55,7 @@ RUN --mount=type=cache,id=nuget,target=/root/.nuget/packages \
 # ============================================================
 FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
-RUN --mount=type=cache,id=nuget,target=/root/.nuget/packages \
-    dotnet publish "UserService.API/UserService.API.csproj" \
+RUN dotnet publish "UserService.API/UserService.API.csproj" \
         -c $BUILD_CONFIGURATION \
         -o /app/publish \
         --no-restore \
