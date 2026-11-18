@@ -46,6 +46,7 @@
 
 ## Architecture
 
+```mermaid
 flowchart LR
     Client[Client] --> API[UserService.API]
     API --> App[UsersService.Application]
@@ -55,7 +56,7 @@ flowchart LR
     MQ --> Consumer[EmailConsumer]
     Consumer --> SMTP[SmtpConnectionService]
     SMTP --> MailPit[MailPit SMTP]
-
+```
 **Clean Architecture:**
 
 - `UserService.API` — Controllers, Middleware (`GlobalExceptionHandler`, `JtiCheckMiddleware`), DI-расширения, `Program.cs`
