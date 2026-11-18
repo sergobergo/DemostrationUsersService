@@ -90,8 +90,6 @@ UsersService/
 
 Все необходимые файлы конфигурации уже хранятся в репозитории.
 
-Перед локальным запуском через Docker необходимо переименовать файл `.env.example` в `.env`.
-
 ### Prerequisites
 
 - .NET SDK 8.0
@@ -99,8 +97,20 @@ UsersService/
 
 ### Run with Docker Compose (recommended)
 
+Клониируем репозиторий на локальную машину.
+Перед запуском через Docker необходимо переименовать файл `.env.example` в `.env`. 
+
 ```bash
 docker compose up --build
+```
+
+### Run with GHCR and `docker-compose.prod.yaml`
+
+Протестировать приложение без клонирования репозитория можно создав новую папку и сохранив и создав в ней два файла `.env` и `docker-compose.yaml`.
+Затем в эти файлы необходимо скопировать код из `.env.example` и `docker-compose.prod.yaml` соответсвенно.
+После чего открываем коммандную строку, переходим в в папку с файлами и вводим команду:
+```bash
+docker compose up -d
 ```
 
 | Сервис | Адрес |
