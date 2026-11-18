@@ -39,7 +39,11 @@ app.UseMiddleware<GlobalExceptionHandler>();
 using (var scope = app.Services.CreateScope())
 {
     var dbContext = scope.ServiceProvider.GetRequiredService<UserServiceDbContext>();
-    dbContext.Database.Migrate();
+
+    if (dbContext.Database.IsRelational())
+    {
+        dbContext.Database.Migrate();
+    }
 }
 if (app.Environment.IsDevelopment())
 {
