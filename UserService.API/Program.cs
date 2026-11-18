@@ -1,6 +1,8 @@
+using Microsoft.EntityFrameworkCore;
 using UserService.API.Extensions;
 using UserService.API.Middleware;
 using UsersService.Application.UsersService.Models.Settings;
+using UsersService.Domain;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -34,6 +36,11 @@ var app = builder.Build();
 
 app.UseMiddleware<GlobalExceptionHandler>();
 
+using (var scope = app.Services.CreateScope())
+{
+    var dbContext = scope.ServiceProvider.GetRequiredService<UserServiceDbContext>();
+    dbContext.Database.Migrate();
+}
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
