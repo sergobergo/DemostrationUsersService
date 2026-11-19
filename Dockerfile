@@ -95,6 +95,6 @@ ENV ASPNETCORE_ENVIRONMENT=Production
 ENTRYPOINT ["dotnet", "UserService.API.dll"]
 
 # ============================================================
-# DEFAULT TARGET = production
+# DEFAULT TARGET = development
 # ============================================================
-FROM production AS final
+FROM development AS final
