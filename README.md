@@ -16,14 +16,17 @@
   - Генерация 6-значного буквенно-цифрового кода (`AuthCodeGenerator`)
   - Хранение кода в Redis с TTL, повторная отправка кода
   - Проверка уникальности логина на этапе верификации
+  - 
 - **Авторизация**
   - JWT Access Token + Refresh Token с ротацией
-  - Хранение `JTI` в БД, `JtiCheckMiddleware` для отзыва токенов
+  - Хранение `JTI` в БД и `Redis`, `JtiCheckMiddleware` для отзыва токенов
   - Проверка пароля на утечку через Have I Been Pwned API (k-Anonymity, SHA1)
+  - 
 - **Асинхронные уведомления**
-  - `MessageExchangerService` -> RabbitMQ (MassTransit) -> `EmailConsumer` -> `SmtpConnectionService`
-  - Автоматическое переподключение к SMTP, retry-логика отправки
-  - `EmailService<T>` с валидацией DTO через FluentValidation
+  - `MessageExchangerService` -> RabbitMQ (MassTransit) -> `EmailConsumer` -> MailPit
+  - Автоматическое переподключение к SMTP (SmtpConnectionService), retry-логика отправки
+  - `NotificationService<T>` с валидацией  DTO через FluentValidation
+  - 
 - **Инфраструктура**
   - Глобальный обработчик исключений с маппингом бизнес-исключений в HTTP-статусы
   - Валидация входных данных FluentValidation
@@ -60,7 +63,7 @@ flowchart LR
 **Clean Architecture:**
 
 - `UserService.API` — Controllers, Middleware (`GlobalExceptionHandler`, `JtiCheckMiddleware`), DI-расширения, `Program.cs`
-- `UsersService.Application` — Сервисы (`AuthService`, `UserVerificationService`, `JtiCheckService`, `PwnedPasswordService`, `RedisService`), Features (Validation, Mappers), NotificationService
+- `UsersService.Application` — Сервисы (`AuthService`, `UserVerificationService`, `JtiCheckService`, `PwnedPasswordService`, `RedisService`), Features (Validation, Mappers), NotificationService (`SmtpConnectionService`,`NotificationFactory`,`MessageExchangerService`,`EmailService`,`EmailConsumer`)
 - `UsersService.Domain` — `UserServiceDbContext`, `UserEntity`, конфигурации EF Core, миграции
 
 ## Project Structure
