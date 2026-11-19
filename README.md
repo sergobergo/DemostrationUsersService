@@ -149,6 +149,7 @@ Content-Type: application/json
 {
   "name": "NewUser",
   "email": "user@example.com",
+  "login": "NewUserLogin",
   "password": "StrongPass1!"
 }
 ```
@@ -158,8 +159,8 @@ Content-Type: application/json
 ```http
 POST /api/auth/register
 {
-  "email": "user@example.com",
-  "code": "JCAPQU"
+  "login": "NewUserLogin",
+  "code": "JCAPQU(Заменить на код из mailpit)"
 }
 ```
 
