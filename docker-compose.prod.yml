@@ -1,6 +1,10 @@
 services:
   userservice:
-    image: ghcr.io/sergobergo/userservice:latest
+     # Development:
+    image: ghcr.io/sergobergo/userservice:dev
+
+    # Production:
+    # image: ghcr.io/sergobergo/userservice:latest
     ports:
       - "8080:8080"
     env_file:
